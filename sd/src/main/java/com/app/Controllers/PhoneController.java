@@ -1,4 +1,5 @@
 package com.app.Controllers;
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -6,7 +7,7 @@ import com.app.Dao.DaoGenerico;
 import com.app.InterfaceRMI.InterfaceRMI;
 import com.app.model.Phone;
 
-public class PhoneController extends UnicastRemoteObject implements InterfaceRMI<Phone> {
+public class PhoneController extends UnicastRemoteObject implements InterfaceRMI<Phone>,Serializable {
     private DaoGenerico<Phone> dao = null;
     
     public PhoneController() throws RemoteException {
