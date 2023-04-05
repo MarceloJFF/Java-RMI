@@ -12,6 +12,7 @@ import com.app.Controllers.ContactController;
 import com.app.Controllers.PhoneBookController;
 import com.app.Controllers.PhoneController;
 import com.app.Controllers.UserController;
+import com.app.InterfaceRMI.InterfaceRMI;
 import com.app.model.Address;
 import com.app.model.Contact;
 import com.app.model.Phone;
@@ -27,12 +28,16 @@ public class App
     public static void main( String[] args )
     {
 		try {
+			System.setProperty("java.rmi.server.useCodebaseOnly", "false");
+
+
 			//criar um objeto que será remoto
-            AddressController addressController = new AddressController();
+			InterfaceRMI<Phone> phoneController = new PhoneController();
 			//Criar o registro (RMI Registry)
+		
 			LocateRegistry.createRegistry(1099);
 			//Registrar um objeto
-			Naming.rebind("//localhost/address", addressController);
+			Naming.rebind("//localhost/phone", phoneController);
 			//Servidor fica rodando aguardando requisiçoes do cliente
 			System.out.println("Servidor rodando...");
 		} catch (RemoteException e) {

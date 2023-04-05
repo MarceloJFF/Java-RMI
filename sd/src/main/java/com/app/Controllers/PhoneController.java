@@ -1,12 +1,18 @@
 package com.app.Controllers;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import com.app.Dao.DaoGenerico;
+import com.app.InterfaceRMI.InterfaceRMI;
 import com.app.model.Phone;
 
-public class PhoneController {
+public class PhoneController extends UnicastRemoteObject implements InterfaceRMI<Phone> {
     private DaoGenerico<Phone> dao = null;
     
-    public PhoneController(){
+    public PhoneController() throws RemoteException {
+        super();
         dao = dao.getIntance();
+        //TODO Auto-generated constructor stub
     }
 
     public boolean salvar(Phone p){
