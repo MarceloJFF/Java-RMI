@@ -1,24 +1,37 @@
 package com.app.Controllers;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import com.app.Dao.DaoGenerico;
+import com.app.InterfaceRMI.InterfaceRMI;
 import com.app.model.Address;
 
-public class AddressController {
-    private DaoGenerico<Address> dao = null;
+public class AddressController extends UnicastRemoteObject implements InterfaceRMI <Address> {
     
-    public AddressController(){
+    private DaoGenerico<Address> dao = null;
+    public AddressController() throws RemoteException {
+        super();
         dao = dao.getIntance();
+        //TODO Auto-generated constructor stub
     }
 
-    public boolean salvar(Address c){
-        return dao.salvar(c);
+    // public AddressController(){
+    //     dao = dao.getIntance();
+    // }
+   
+    @Override
+    public boolean salvar(Address a) throws RemoteException {
+        // TODO Auto-generated method stub
+        return dao.salvar(a);
+    }
+    @Override
+    public boolean excluir(Address a) throws RemoteException {
+        return dao.excluir(a);
     }
 
-    public Address get(Integer id){
+    @Override
+    public Address get(Integer id) throws RemoteException {
         return  (Address) dao.get(Address.class, id);
-    }
-
-    public boolean excluir(Address c){
-        return dao.excluir(c);
     }
 }

@@ -1,5 +1,9 @@
 package com.app;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +26,21 @@ public class App
 {
     public static void main( String[] args )
     {
-       AddressController addressController = new AddressController();
-       Address address = addressController.get(8);
-       ContactController contactController = new ContactController();
-       
-        List<Phone> phones = contactController.get(16).getPhones();
-        for ( Phone phone : phones ) {
-            System.out.println(phone.getDDD());
-        }
+		try {
+			//criar um objeto que será remoto
+            AddressController addressController = new AddressController();
+			//Criar o registro (RMI Registry)
+			LocateRegistry.createRegistry(1099);
+			//Registrar um objeto
+			Naming.rebind("//localhost/address", addressController);
+			//Servidor fica rodando aguardando requisiçoes do cliente
+			System.out.println("Servidor rodando...");
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
