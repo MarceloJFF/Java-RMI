@@ -1,12 +1,16 @@
 package com.app.Controllers;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import com.app.Dao.DaoGenerico;
+import com.app.InterfaceRMI.InterfaceRMI;
 import com.app.model.PhoneBookContact;
 
-public class PhoneBookController {
+public class PhoneBookController  extends UnicastRemoteObject implements InterfaceRMI<PhoneBookContact> {
     private DaoGenerico<PhoneBookContact> dao = null;
     
-    public PhoneBookController(){
+    public PhoneBookController() throws RemoteException {
         dao = dao.getIntance();
     }
 

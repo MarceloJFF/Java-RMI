@@ -7,7 +7,7 @@ import com.app.Dao.DaoGenerico;
 import com.app.InterfaceRMI.InterfaceRMI;
 import com.app.model.Phone;
 
-public class PhoneController extends UnicastRemoteObject implements InterfaceRMI<Phone>,Serializable {
+public class PhoneController extends UnicastRemoteObject implements InterfaceRMI<Phone>{
     private DaoGenerico<Phone> dao = null;
     
     public PhoneController() throws RemoteException {

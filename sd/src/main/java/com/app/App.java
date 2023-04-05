@@ -34,11 +34,25 @@ public class App
 
 			//criar um objeto que será remoto
 			InterfaceRMI<Phone> phoneController = new PhoneController();
+			InterfaceRMI<Address> addressController = new AddressController();
+			InterfaceRMI<Contact> contactController = (InterfaceRMI<Contact>) new ContactController();
+			
+			InterfaceRMI<PhoneBookContact> phoneBookController = (InterfaceRMI<PhoneBookContact>) new PhoneBookController();
+
+			InterfaceRMI<User> userController = (InterfaceRMI<User>) new UserController();			
 			//Criar o registro (RMI Registry)
 		
 			LocateRegistry.createRegistry(1099);
 			//Registrar um objeto
 			Naming.rebind("rmi://localhost/phoneController", phoneController);
+			Naming.rebind("rmi://localhost/addressController", addressController);
+			
+			Naming.rebind("rmi://localhost/contactController", contactController);
+			
+			Naming.rebind("rmi://localhost/phoneBookController", phoneBookController);		
+			
+			Naming.rebind("rmi://localhost/userController", userController);
+			
 			//Servidor fica rodando aguardando requisiçoes do cliente
 			System.out.println("Servidor rodando...");
 		} catch (RemoteException e) {

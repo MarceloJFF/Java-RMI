@@ -1,11 +1,15 @@
 package com.app.Controllers;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import com.app.Dao.DaoGenerico;
+import com.app.InterfaceRMI.InterfaceRMI;
 import com.app.model.Contact;
 
-public class ContactController {
+public class ContactController extends UnicastRemoteObject implements InterfaceRMI<Contact> {
     private DaoGenerico<Contact> dao = null;
 
-    public ContactController(){
+    public ContactController() throws RemoteException {
         dao = dao.getIntance();
     }
 
