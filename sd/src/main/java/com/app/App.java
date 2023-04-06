@@ -33,6 +33,8 @@ public class App
 
 
 			//criar um objeto que será remoto
+			PhoneController teste = new PhoneController();
+			System.out.println(teste.get(1));
 			InterfaceRMI<Phone> phoneController = new PhoneController();
 			//Criar o registro (RMI Registry)
 		
