@@ -24,7 +24,7 @@ public class PhoneBookContact implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "PhoneBookContact_Contact",
         joinColumns = @JoinColumn(name="PhoneContact_ID"),
         inverseJoinColumns=@JoinColumn(name="Contact_ID"))

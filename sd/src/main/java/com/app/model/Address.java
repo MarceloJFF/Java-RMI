@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -25,7 +26,6 @@ public class Address implements Serializable{
     private String street;
     private String numberOfHouse;
     private String neighborhood;    
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "address",fetch = FetchType.EAGER)
     private List<Contact> contacts = new ArrayList<>();
-    
 }

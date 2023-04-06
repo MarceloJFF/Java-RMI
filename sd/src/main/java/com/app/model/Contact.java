@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -20,10 +21,10 @@ public class Contact implements Serializable{
     @GeneratedValue
     private Integer id;
     private String name; 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     private Address address;
-    @OneToMany(mappedBy = "contact")
+    @OneToMany(mappedBy = "contact",fetch = FetchType.EAGER)
     private List<Phone> phones = new ArrayList<>();
     //Relacao nxm com agenda 0
 }

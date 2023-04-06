@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,7 +20,7 @@ public class Phone implements Serializable {
     private Integer id;
     private String number;
     private String DDD;  
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "contact_id")
     private Contact contact;
 }
