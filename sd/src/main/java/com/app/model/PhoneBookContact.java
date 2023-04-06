@@ -24,7 +24,6 @@ public class PhoneBookContact implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
-
     @ManyToMany
     @JoinTable(name = "PhoneBookContact_Contact",
         joinColumns = @JoinColumn(name="PhoneContact_ID"),

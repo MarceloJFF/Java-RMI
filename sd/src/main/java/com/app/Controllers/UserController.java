@@ -14,14 +14,16 @@ public class UserController  extends UnicastRemoteObject implements InterfaceRMI
         dao = dao.getIntance();
     }
 
+    @Override
     public boolean salvar(User u){
         return dao.salvar(u);
     }
 
+    @Override
     public User get(Integer id){
         return   dao.get(User.class, id);
     }
-    
+    @Override
     public boolean excluir(User u){
         return dao.excluir(u);
         

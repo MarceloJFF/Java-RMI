@@ -14,14 +14,17 @@ public class PhoneBookController  extends UnicastRemoteObject implements Interfa
         dao = dao.getIntance();
     }
 
+    @Override
     public boolean salvar(PhoneBookContact phoneBookContact){
         return dao.salvar(phoneBookContact);
     }
 
+    @Override
     public PhoneBookContact get(Integer id){
         return  dao.get(PhoneBookContact.class, id);
     }
-
+    
+    @Override
     public boolean excluir(PhoneBookContact phoneBookContact){
         return dao.excluir(phoneBookContact);
     }

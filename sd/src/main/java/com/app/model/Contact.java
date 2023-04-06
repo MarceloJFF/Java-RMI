@@ -16,17 +16,15 @@ import lombok.Data;
 @Data
 @Entity
 public class Contact implements Serializable{
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Integer id;
-    private String name;
-    
+    private String name; 
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
-
     @OneToMany(mappedBy = "contact")
     private List<Phone> phones = new ArrayList<>();
-    
     //Relacao nxm com agenda 0
 }

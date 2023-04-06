@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import javassist.SerialVersionUID;
 import lombok.Data;
 
 @Data
@@ -23,8 +24,7 @@ public class Address implements Serializable{
     private Integer id;
     private String street;
     private String numberOfHouse;
-    private String neighborhood;
-    
+    private String neighborhood;    
     @OneToMany(mappedBy = "address")
     private List<Contact> contacts = new ArrayList<>();
     

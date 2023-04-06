@@ -18,10 +18,8 @@ public class Phone implements Serializable {
     @GeneratedValue
     private Integer id;
     private String number;
-    private String DDD;
-    
+    private String DDD;  
     @ManyToOne
     @JoinColumn(name = "contact_id")
     private Contact contact;
-
 }

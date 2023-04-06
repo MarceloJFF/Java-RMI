@@ -16,16 +16,17 @@ public class PhoneController extends UnicastRemoteObject implements InterfaceRMI
         //TODO Auto-generated constructor stub
     }
 
+    @Override
     public boolean salvar(Phone p){
         return dao.salvar(p);
     }
 
+    @Override
     public Phone get(Integer id){
         return   dao.get(Phone.class, id);
     }
-
     
-
+    @Override
     public boolean excluir(Phone c){
         return dao.excluir(c);
     }
