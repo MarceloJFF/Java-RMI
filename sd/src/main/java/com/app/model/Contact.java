@@ -16,7 +16,6 @@ import lombok.Data;
 @Data
 @Entity
 public class Contact implements Serializable{
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Integer id;

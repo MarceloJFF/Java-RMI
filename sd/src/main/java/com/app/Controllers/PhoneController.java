@@ -23,7 +23,7 @@ public class PhoneController extends UnicastRemoteObject implements InterfaceRMI
 
     @Override
     public Phone get(Integer id){
-        return   dao.get(Phone.class, id);
+        return (Phone)dao.get(Phone.class, id);
     }
     
     @Override
